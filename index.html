@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="EVIORA land investment. High-value lots in a fast-growing location."/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta http-equiv="X-Frame-Options" content="DENY"/>
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()"/>
+
+<title>EVIORA Land Investment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold:     #b8965a;
+  --gold-lt:  #d4b47a;
+  --off:      #f5f2ec;
+  --ink:      #111111;
+  --muted:    rgba(17,17,17,0.58);
+  --line:     rgba(17,17,17,0.13);
+  --line-lt:  rgba(255,255,255,0.2);
+  --nav-h:    80px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--off);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  cursor: none;
+}
+
+/* ─── HONEYPOT (anti-spam trap) ─── */
+.hp-trap {
+  position:absolute !important;
+  left:-9999px !important; top:-9999px !important;
+  width:1px !important; height:1px !important;
+  overflow:hidden !important; opacity:0 !important;
+  pointer-events:none !important;
+}
+
+/* ─── FORM ERROR ─── */
+.form-error-msg {
+  display:none;
+  padding:14px 20px;
+  background:#fff3f3;
+  border:1px solid rgba(180,50,50,.22);
+  color:#b43232;
+  font-size:14px;
+  line-height:1.7;
+  letter-spacing:.01em;
+  margin-top:-1px;
+}
+.form-error-msg.show { display:block; }
+
+/* ─── CURSOR ─── */
+.cursor {
+  position: fixed; top:0; left:0;
+  width:6px; height:6px;
+  background: var(--gold); border-radius:50%;
+  pointer-events:none; z-index:99999;
+  transform:translate(-50%,-50%);
+  transition: width .25s, height .25s;
+}
+.cursor-ring {
+  position:fixed; top:0; left:0;
+  width:32px; height:32px;
+  border:1px solid rgba(184,150,90,.45); border-radius:50%;
+  pointer-events:none; z-index:99998;
+  transform:translate(-50%,-50%);
+  transition: width .4s cubic-bezier(.16,1,.3,1),
+              height .4s cubic-bezier(.16,1,.3,1),
+              border-color .3s;
+}
+.cursor.large   { width:12px; height:12px; }
+.cursor-ring.large { width:48px; height:48px; border-color:rgba(184,150,90,.75); }
+
+/* ─── NAV ─── */
+nav {
+  position:fixed; top:0; left:0; right:0; height:var(--nav-h);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 52px; z-index:1000;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background .55s ease, border-color .55s ease, backdrop-filter .55s ease;
+}
+/* on hero: fully transparent */
+nav.on-hero {
+  background: transparent;
+  border-bottom-color: rgba(255,255,255,.12);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+/* scrolled off hero: glassmorphism */
+nav.scrolled {
+  background: rgba(245,242,236,0.72);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border-bottom-color: rgba(184,150,90,0.2);
+  box-shadow: 0 2px 24px rgba(17,17,17,0.07);
+}
+
+    .nav-logo {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    /* Both logos stacked, fade between them */
+    .nav-logo-img-white,
+    .nav-logo-img-dark {
+        height: 14px;
+        width: auto;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity .5s ease;
+    }
+
+    /* On hero: show white, hide dark */
+    nav.on-hero .nav-logo-img-white {
+        opacity: 1;
+    }
+
+    nav.on-hero .nav-logo-img-dark {
+        opacity: 0;
+    }
+
+    /* Scrolled down: hide white, show dark */
+    nav:not(.on-hero) .nav-logo-img-white {
+        opacity: 0;
+    }
+
+    nav:not(.on-hero) .nav-logo-img-dark {
+        opacity: 1;
+    }
+
+.nav-links { display:flex; gap:36px; list-style:none; }
+.nav-links a {
+  color:var(--muted); text-decoration:none; font-size:11px;
+  letter-spacing:.18em; text-transform:uppercase; font-weight:400;
+  transition: color .25s;
+}
+nav.on-hero .nav-links a { color:rgba(255,255,255,.72); }
+nav.on-hero .nav-links a:hover { color:#fff; }
+.nav-links a:hover { color:var(--ink); }
+.nav-cta {
+  background:var(--ink); color:var(--off); border:1px solid transparent;
+  padding:11px 26px;
+  font-family:'DM Sans',sans-serif; font-size:11px; letter-spacing:.16em;
+  text-transform:uppercase; cursor:pointer; font-weight:400; transition: background .3s, border-color .3s, color .3s;
+}
+nav.on-hero .nav-cta { background:transparent; border-color:rgba(255,255,255,.45); color:#fff; }
+nav.on-hero .nav-cta:hover { background:var(--gold); border-color:var(--gold); }
+.nav-cta:hover { background:var(--gold); }
+@media(max-width:768px){
+  nav { padding:0 24px; }
+  .nav-links { display:none; }
+}
+
+/* ─── HERO ─── */
+.hero {
+  position:relative; height:100vh;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding-bottom:80px; padding-left:52px; padding-right:52px;
+  overflow:hidden;
+}
+
+/* SLIDE BG */
+.hero-bg { position:absolute; inset:0; z-index:0; }
+.slide {
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  opacity:0;
+  transition: opacity 2.2s cubic-bezier(.4,0,.2,1), transform 9s ease;
+  transform:scale(1.06);
+  will-change: opacity, transform;
+}
+.slide.active { opacity:1; transform:scale(1); }
+    .slide:nth-child(1) {
+        background-image: url('./assets/imgs/i-x7qk9a1.webp');
+    }
+    .slide:nth-child(2) {
+        background-image: url('./assets/imgs/i-m4tz8b2.webp');
+    }
+    .slide:nth-child(3) {
+        background-image: url('./assets/imgs/i-r9p2vd3.webp');
+    }
+    .slide:nth-child(4) {
+        background-image: url('./assets/imgs/i-k6w3nx4.webp');
+    }
+    .slide:nth-child(5) {
+        background-image: url('./assets/imgs/i-j8c5qy5.webp');
+    }
+/* overlays */
+.hero-overlay {
+  position:absolute; inset:0; z-index:1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.18) 0%,
+    rgba(0,0,0,.08) 40%,
+    rgba(0,0,0,.62) 100%
+  );
+}
+.hero-vignette {
+  position:absolute; inset:0; z-index:2;
+  background: radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,.45) 100%);
+}
+
+/* hero decorators */
+.hero-tag {
+  position:absolute; top:calc(var(--nav-h) + 36px); left:52px; z-index:10;
+  font-size:9px; letter-spacing:.4em; text-transform:uppercase;
+  color:var(--gold-lt); font-weight:400;
+  opacity:0; animation:fadeIn .8s .2s forwards;
+}
+.hero-index {
+  position:absolute; top:calc(var(--nav-h) + 36px); right:52px; z-index:10;
+  font-family:'Cormorant Garamond',serif;
+  font-size:11px; letter-spacing:.2em; color:rgba(255,255,255,.45);
+  opacity:0; animation:fadeIn .8s .3s forwards;
+}
+.slide-dots {
+  position:absolute; bottom:88px; right:52px; z-index:10;
+  display:flex; gap:8px; align-items:center;
+}
+.sdot {
+  width:20px; height:0px; background:rgba(255,255,255,.3);
+  transition: width .5s, background .5s;
+}
+.sdot.active { width:40px; background:var(--gold-lt); }
+
+/* hero content */
+.hero-content {
+  position:relative; z-index:10;
+  will-change: transform, opacity;
+}
+.hero-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(58px,9.5vw,130px); font-weight:300; line-height:.92;
+  letter-spacing:-.02em; color:#fff;
+  opacity:0; transform:translateY(28px);
+  animation:fadeUp 1s .4s forwards cubic-bezier(.16,1,.3,1);
+  max-width:900px;
+}
+.hero-title em { font-style:italic; color:var(--gold-lt); }
+.hero-bottom {
+  display:flex; align-items:flex-end; justify-content:space-between;
+  margin-top:48px; flex-wrap:wrap; gap:32px;
+  opacity:0; transform:translateY(16px);
+  animation:fadeUp .9s .7s forwards cubic-bezier(.16,1,.3,1);
+}
+.hero-sub {
+  font-size:16px; line-height:1.85; color:rgba(255,255,255,.82);
+  max-width:380px; font-weight:400; letter-spacing:.02em;
+}
+.hero-actions { display:flex; gap:14px; flex-shrink:0; flex-wrap:wrap; }
+
+.btn-gold {
+  background:var(--gold); color:#fff; border:none; padding:17px 44px;
+  font-family:'DM Sans',sans-serif; font-size:12px; letter-spacing:.18em;
+  text-transform:uppercase; cursor:pointer; font-weight:500;
+  text-decoration:none; display:inline-block;
+  transition: background .3s, transform .3s;
+}
+.btn-gold:hover { background:var(--gold-lt); transform:translateY(-1px); }
+
+.btn-ghost-hero {
+  background:transparent; color:#fff;
+  border:1px solid rgba(255,255,255,.45); padding:17px 44px;
+  font-family:'DM Sans',sans-serif; font-size:12px; letter-spacing:.18em;
+  text-transform:uppercase; cursor:pointer; font-weight:400;
+  text-decoration:none; display:inline-block;
+  transition: border-color .3s, color .3s, transform .3s;
+}
+.btn-ghost-hero:hover { border-color:var(--gold-lt); color:var(--gold-lt); transform:translateY(-1px); }
+
+@media(max-width:600px){
+  .hero { padding-left:24px; padding-right:24px; padding-bottom:60px; }
+  .hero-tag { left:24px; }
+  .hero-index { right:24px; }
+  .slide-dots { right:24px; }
+  .hero-bottom { flex-direction:column; align-items:flex-start; }
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp  { to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn  { to { opacity:1; } }
+
+/* ─── REVEAL ─── */
+.reveal {
+  opacity:0; transform:translateY(28px);
+  transition: opacity .85s cubic-bezier(.16,1,.3,1),
+              transform .85s cubic-bezier(.16,1,.3,1);
+}
+.reveal.visible { opacity:1; transform:none; }
+
+/* ─── LAYOUT HELPERS ─── */
+.section-wrap { max-width:1200px; margin:0 auto; padding:0 52px; }
+@media(max-width:600px){ .section-wrap { padding:0 24px; } }
+.eyebrow {
+  font-size:11px; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--gold); font-weight:500; display:block; margin-bottom:20px;
+}
+.rule { width:40px; height:1px; background:var(--gold); margin-bottom:24px; }
+
+/* light-section buttons */
+.btn-dark {
+  background:var(--ink); color:var(--off); border:none; padding:14px 36px;
+  font-family:'DM Sans',sans-serif; font-size:10px; letter-spacing:.2em;
+  text-transform:uppercase; cursor:pointer; font-weight:400;
+  text-decoration:none; display:inline-block;
+  transition: background .3s, transform .3s;
+}
+.btn-dark:hover { background:var(--gold); transform:translateY(-1px); }
+.btn-outline {
+  background:transparent; color:var(--ink); border:1px solid var(--line);
+  padding:14px 36px; font-family:'DM Sans',sans-serif; font-size:10px;
+  letter-spacing:.2em; text-transform:uppercase; cursor:pointer; font-weight:400;
+  text-decoration:none; display:inline-block;
+  transition: border-color .3s, color .3s, transform .3s;
+}
+.btn-outline:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-1px); }
+
+/* ─── STATS ─── */
+.stats-bar { border-bottom:1px solid var(--line); padding:64px 0; }
+.stats-inner {
+  max-width:1200px; margin:0 auto; padding:0 52px;
+  display:grid; grid-template-columns:repeat(4,1fr);
+}
+.stat-item { padding:0 40px; border-right:1px solid var(--line); }
+.stat-item:first-child { padding-left:0; }
+.stat-item:last-child  { border-right:none; }
+.stat-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:60px; font-weight:300; color:var(--ink); line-height:1; margin-bottom:8px;
+}
+.stat-num span { color:var(--gold); }
+.stat-label { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); font-weight:400; }
+@media(max-width:700px){
+  .stats-inner { grid-template-columns:repeat(2,1fr); }
+  .stat-item { padding:28px; border-right:none; border-bottom:1px solid var(--line); }
+  .stat-item:nth-child(odd)  { border-right:1px solid var(--line); }
+  .stat-item:last-child      { border-bottom:none; }
+}
+
+/* ─── PROPERTIES CAROUSEL ─── */
+.property-section { padding:100px 0; border-bottom:1px solid var(--line); overflow:hidden; }
+.prop-header {
+  display:flex; justify-content:space-between; align-items:flex-end;
+  margin-bottom:52px; flex-wrap:wrap; gap:24px;
+  padding:0 52px;
+}
+@media(max-width:600px){ .prop-header { padding:0 24px; } }
+.prop-header h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(34px,4.5vw,58px); font-weight:300; line-height:1.08; max-width:480px;
+}
+.prop-header h2 em { font-style:italic; color:var(--gold); }
+.prop-header-right { display:flex; flex-direction:column; align-items:flex-end; gap:20px; }
+
+.prop-header-right p { font-size:15px; color:var(--muted); max-width:280px; line-height:1.85; text-align:right; }
+
+/* carousel nav arrows */
+.carousel-nav { display:flex; gap:10px; }
+.carousel-btn {
+  width:52px; height:52px;
+  border:1px solid var(--line); background:transparent;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; transition: border-color .3s, background .3s;
+  flex-shrink:0;
+}
+.carousel-btn:hover { border-color:var(--gold); background:var(--gold); }
+.carousel-btn:hover svg { stroke:#fff; }
+.carousel-btn svg { width:16px; height:16px; stroke:var(--ink); fill:none; stroke-width:1.5; transition:stroke .3s; }
+
+/* track wrapper */
+.carousel-outer {
+  position:relative;
+  padding:0 52px;
+  overflow:hidden;
+}
+@media(max-width:600px){ .carousel-outer { padding:0 24px; } }
+
+.carousel-track-wrap { overflow:hidden; }
+.carousel-track {
+  display:flex; gap:20px;
+  transition: transform .7s cubic-bezier(.16,1,.3,1);
+  will-change: transform;
+  user-select:none;
+}
+
+/* progress bar */
+.carousel-progress {
+  margin:32px 52px 0;
+  height:1px; background:var(--line); position:relative; overflow:hidden;
+}
+@media(max-width:600px){ .carousel-progress { margin-left:24px; margin-right:24px; } }
+.carousel-progress-fill {
+  position:absolute; top:0; left:0; height:100%;
+  background:var(--gold);
+  transition: width .7s cubic-bezier(.16,1,.3,1);
+}
+
+/* ── CARD ── */
+.prop-card {
+  flex:0 0 380px;
+  position:relative; overflow:hidden;
+  background:#fff;
+  border:1px solid var(--line);
+  transition: border-color .45s, box-shadow .45s, transform .45s cubic-bezier(.16,1,.3,1);
+  cursor:none;
+}
+.prop-card:hover {
+  border-color:rgba(184,150,90,.5);
+  box-shadow:0 20px 60px rgba(14,14,14,.13);
+  transform:translateY(-6px);
+  z-index:2;
+}
+@media(max-width:600px){ .prop-card { flex:0 0 300px; } }
+
+/* image */
+.pc-img-wrap { position:relative; overflow:hidden; height:280px; }
+.pc-img {
+  width:100%; height:100%;
+  background-size:cover; background-position:center;
+  transition: transform 1s cubic-bezier(.16,1,.3,1), filter .7s;
+  filter:brightness(.82) saturate(.85);
+  will-change:transform;
+}
+.prop-card:hover .pc-img {
+  transform:scale(1.09);
+  filter:brightness(.96) saturate(1.1);
+}
+
+/* hover reveal overlay */
+.pc-hover-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(14,14,14,.55) 0%, transparent 55%);
+  opacity:0;
+  transition: opacity .5s ease;
+}
+.prop-card:hover .pc-hover-overlay { opacity:1; }
+
+/* quick-view link on hover */
+.pc-quick {
+  position:absolute; bottom:20px; right:20px;
+  font-size:9px; letter-spacing:.2em; text-transform:uppercase;
+  color:#fff; opacity:0; transform:translateY(8px);
+  transition: opacity .4s .05s, transform .4s .05s cubic-bezier(.16,1,.3,1);
+  pointer-events:none;
+  display:flex; align-items:center; gap:6px;
+}
+.pc-quick::after {
+  content:'';
+  display:inline-block; width:20px; height:1px; background:var(--gold-lt);
+}
+.prop-card:hover .pc-quick { opacity:1; transform:translateY(0); }
+
+/* badge */
+.pc-badge {
+  position:absolute; top:18px; left:18px; z-index:2;
+  font-size:8px; letter-spacing:.28em; text-transform:uppercase; font-weight:400;
+  padding:5px 13px; backdrop-filter:blur(10px);
+  background:rgba(247,244,239,.9); color:var(--gold);
+  border:1px solid rgba(184,150,90,.3);
+  transition: transform .3s cubic-bezier(.16,1,.3,1);
+}
+.pc-badge.urgent  { background:rgba(160,40,40,.88); color:#fff; border-color:transparent; }
+.pc-badge.corner  { background:rgba(14,14,14,.78); color:var(--gold-lt); border-color:rgba(184,150,90,.25); }
+.prop-card:hover .pc-badge { transform:translateY(-2px); }
+
+/* lot number */
+.pc-lot-overlay {
+  position:absolute; bottom:0; left:0; right:0;
+  padding:56px 22px 18px;
+  background:linear-gradient(to top, rgba(14,14,14,.65) 0%, transparent 100%);
+}
+.pc-lot-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:30px; font-weight:300; color:#fff; line-height:1;
+  transition: transform .5s cubic-bezier(.16,1,.3,1);
+}
+.prop-card:hover .pc-lot-num { transform:translateY(-4px); }
+
+/* card body */
+.pc-body { padding:26px 26px 28px; }
+.pc-meta-row {
+  display:flex; gap:0; margin-bottom:20px;
+  border-bottom:1px solid var(--line); padding-bottom:18px;
+}
+.pc-meta {
+  flex:1;
+  font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
+  padding:0 14px; border-right:1px solid var(--line);
+}
+.pc-meta:first-child { padding-left:0; }
+.pc-meta:last-child  { border-right:none; }
+.pc-meta strong {
+  display:block; font-size:17px; font-weight:400; color:var(--ink);
+  letter-spacing:0; margin-top:6px; font-family:'Cormorant Garamond',serif;
+  transition: color .3s;
+}
+.prop-card:hover .pc-meta strong { color:var(--ink); }
+
+.pc-desc {
+  font-size:14px; color:var(--muted); line-height:1.85;
+  margin-bottom:20px; font-weight:400;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+
+.pc-footer { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.pc-price {
+  font-family:'Cormorant Garamond',serif;
+  font-size:30px; font-weight:400; color:var(--ink); line-height:1;
+}
+.pc-price small {
+  display:block; font-family:'DM Sans',sans-serif;
+  font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:4px;
+}
+.btn-pc-inquire {
+  background:var(--ink); color:var(--off); border:none;
+  padding:14px 24px; font-family:'DM Sans',sans-serif;
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  cursor:pointer; font-weight:500; white-space:nowrap; flex-shrink:0;
+  position:relative; overflow:hidden;
+  transition: transform .3s;
+}
+.btn-pc-inquire::before {
+  content:''; position:absolute; inset:0;
+  background:var(--gold);
+  transform:translateX(-101%);
+  transition: transform .4s cubic-bezier(.16,1,.3,1);
+}
+.btn-pc-inquire span { position:relative; z-index:1; }
+.btn-pc-inquire:hover { transform:translateY(-1px); }
+.btn-pc-inquire:hover::before { transform:translateX(0); }
+
+/* ─── ABOUT / AGENT ─── */
+.about-section {
+  padding:100px 0;
+  background: var(--ink);
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.about-inner {
+  display:grid; grid-template-columns:420px 1fr; gap:80px; align-items:center;
+}
+@media(max-width:960px){ .about-inner { grid-template-columns:1fr; gap:52px; } }
+
+/* agent photo */
+.agent-photo-wrap {
+  position:relative;
+}
+    .agent-photo {
+        width: 100%;
+        aspect-ratio: 3/4;
+        background-image: url('./assets/imgs/ap-x9k4bz007.webp');
+        background-size: cover;
+        background-position: center top;
+        filter: grayscale(.15) contrast(1.05);
+    }
+.agent-photo-border {
+  position:absolute; inset:0;
+  border:1px solid rgba(184,150,90,.25);
+  pointer-events:none;
+}
+/* gold accent line */
+.agent-photo-wrap::before {
+  content:'';
+  position:absolute; top:24px; left:-24px;
+  width:1px; height:80px;
+  background:linear-gradient(to bottom, transparent, var(--gold-lt));
+}
+.agent-photo-wrap::after {
+  content:'';
+  position:absolute; bottom:-24px; right:24px;
+  width:80px; height:1px;
+  background:linear-gradient(to right, transparent, var(--gold-lt));
+}
+@media(max-width:600px){
+  .agent-photo-wrap::before, .agent-photo-wrap::after { display:none; }
+}
+
+/* agent text */
+.agent-text {}
+.agent-eyebrow {
+  font-size:9px; letter-spacing:.38em; text-transform:uppercase;
+  color:var(--gold); font-weight:400; display:block; margin-bottom:20px;
+}
+.agent-rule { width:40px; height:1px; background:var(--gold); margin-bottom:28px; }
+
+.agent-name {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(38px,5vw,64px); font-weight:300; line-height:.95;
+  color:#fff; margin-bottom:6px;
+}
+.agent-name em { font-style:italic; color:var(--gold-lt); }
+.agent-title {
+  font-size:12px; letter-spacing:.22em; text-transform:uppercase;
+  color:rgba(255,255,255,.5); margin-bottom:36px;
+}
+.agent-bio {
+  font-size:16px; line-height:2; color:rgba(255,255,255,.68);
+  margin-bottom:18px; max-width:480px;
+}
+
+/* agent stats */
+.agent-stats {
+  display:flex; gap:40px; margin:36px 0; flex-wrap:wrap;
+}
+.ast-item {}
+.ast-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:36px; font-weight:300; color:#fff; line-height:1; margin-bottom:4px;
+}
+.ast-num span { color:var(--gold-lt); }
+.ast-label { font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.45); font-weight:400; }
+
+/* agent credentials */
+.agent-creds {
+  display:flex; flex-wrap:wrap; gap:10px; margin-bottom:36px;
+}
+.cred-tag {
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  border:1px solid rgba(184,150,90,.35); color:rgba(255,255,255,.6);
+  padding:8px 16px;
+}
+
+/* agent contact */
+.agent-contact {
+  display:flex; gap:14px; flex-wrap:wrap;
+}
+.btn-agent-wa {
+  display:inline-flex; align-items:center; gap:12px;
+  background:transparent; border:1px solid rgba(184,150,90,.5); padding:15px 28px;
+  font-family:'DM Sans',sans-serif; font-size:12px; letter-spacing:.14em;
+  text-transform:uppercase; cursor:pointer; color:var(--gold-lt); font-weight:400;
+  transition: border-color .3s, background .3s;
+}
+.btn-agent-wa:hover { background:rgba(184,150,90,.1); border-color:var(--gold-lt); }
+.btn-agent-wa svg { width:14px; height:14px; fill:#25D366; flex-shrink:0; }
+.btn-agent-call {
+  display:inline-flex; align-items:center; gap:12px;
+  background:transparent; border:1px solid rgba(255,255,255,.18); padding:15px 28px;
+  font-family:'DM Sans',sans-serif; font-size:12px; letter-spacing:.14em;
+  text-transform:uppercase; cursor:pointer; color:rgba(255,255,255,.6); font-weight:400;
+  transition: border-color .3s, color .3s;
+}
+.btn-agent-call:hover { border-color:rgba(255,255,255,.3); color:#fff; }
+
+/* ─── LOCATION ─── */
+.location-section { padding:100px 0; border-bottom:1px solid var(--line); }
+.location-inner {
+  display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;
+}
+@media(max-width:900px){ .location-inner { grid-template-columns:1fr; gap:48px; } }
+.location-text h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,4vw,52px); font-weight:300; line-height:1.1; margin-bottom:24px;
+}
+.location-text h2 em { font-style:italic; color:var(--gold); }
+.location-text p { color:var(--muted); font-size:16px; line-height:1.9; margin-bottom:18px; }
+.map-frame { border:1px solid var(--line); overflow:hidden; }
+.map-frame iframe { width:100%; height:360px; border:none; display:block; filter:grayscale(.1); }
+.btn-wa-loc {
+  display:inline-flex; align-items:center; gap:12px;
+  background:transparent; border:1px solid var(--line); padding:15px 28px;
+  font-family:'DM Sans',sans-serif; font-size:12px; letter-spacing:.14em;
+  text-transform:uppercase; cursor:pointer; color:var(--ink); font-weight:400;
+  transition: border-color .3s, color .3s; margin-top:8px;
+}
+.btn-wa-loc:hover { border-color:var(--gold); color:var(--gold); }
+.btn-wa-loc svg { width:14px; height:14px; fill:#25D366; flex-shrink:0; }
+
+/* ─── FORM ─── */
+.form-section { padding:100px 0; }
+.form-inner { max-width:680px; margin:0 auto; }
+.form-header { margin-bottom:52px; }
+.form-header h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,4vw,52px); font-weight:300; line-height:1.1; margin-bottom:16px;
+}
+.form-header h2 em { font-style:italic; color:var(--gold); }
+.form-header p { font-size:15px; color:var(--muted); line-height:1.9; }
+
+.inquiry-form { display:flex; flex-direction:column; }
+.f-row { display:grid; grid-template-columns:1fr 1fr; }
+@media(max-width:600px){ .f-row { grid-template-columns:1fr; } }
+.f-field {
+  position:relative; border:1px solid var(--line);
+  margin:-1px 0 0 -1px; transition:border-color .3s;
+}
+.f-field:focus-within { border-color:rgba(184,150,90,.5); z-index:1; }
+.f-field label {
+  position:absolute; top:18px; left:20px;
+  font-size:10px; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--muted); pointer-events:none; transition:all .25s;
+}
+.f-field input, .f-field textarea {
+  width:100%; background:transparent; border:none; outline:none;
+  padding:38px 20px 16px; color:var(--ink);
+  font-family:'DM Sans',sans-serif; font-size:16px; font-weight:400; resize:none;
+}
+.f-field textarea { min-height:120px; }
+.f-field input:focus+label, .f-field input:not(:placeholder-shown)+label,
+.f-field textarea:focus+label, .f-field textarea:not(:placeholder-shown)+label {
+  top:10px; font-size:7.5px; color:var(--gold);
+}
+.f-field input::placeholder, .f-field textarea::placeholder { color:transparent; }
+.btn-submit {
+  background:var(--ink); color:var(--off); border:none; padding:22px;
+  font-family:'DM Sans',sans-serif; font-size:13px; letter-spacing:.2em;
+  text-transform:uppercase; cursor:pointer; font-weight:500; width:100%; margin-top:-1px;
+  transition:background .3s;
+}
+.btn-submit:hover { background:var(--gold); }
+.consent-label {
+  display:flex; align-items:flex-start; gap:10px;
+  font-size:12px; color:var(--muted); margin-top:16px;
+  cursor:pointer; line-height:1.6; letter-spacing:.02em;
+}
+.consent-label input[type="checkbox"] {
+  width:15px; height:15px; flex-shrink:0; margin-top:2px;
+  accent-color:var(--gold); cursor:pointer;
+}
+.form-note { font-size:11px; color:var(--muted); margin-top:12px; text-align:center; letter-spacing:.04em; line-height:1.7; }
+.form-note a { color:var(--gold); }
+.field-hint { font-size:11px; color:var(--muted); padding:5px 20px 8px; letter-spacing:.04em; opacity:.75; }
+.form-success {
+  display:none; text-align:center; padding:72px 40px; border:1px solid var(--line);
+}
+.form-success.show { display:block; }
+.form-success h3 {
+  font-family:'Cormorant Garamond',serif; font-size:40px; font-weight:300;
+  margin-bottom:12px; color:var(--gold);
+}
+.form-success p { font-size:13px; color:var(--muted); line-height:1.9; }
+
+/* ─── FOOTER ─── */
+footer {
+  background:var(--ink); color:var(--off);
+  padding:72px 52px 48px;
+}
+.footer-inner {
+  max-width:1200px; margin:0 auto;
+  display:grid; grid-template-columns:2fr 1fr 1fr; gap:64px; margin-bottom:56px;
+}
+@media(max-width:768px){ footer { padding:60px 24px 40px; } .footer-inner { grid-template-columns:1fr; gap:40px; } }
+.footer-logo {
+  font-family:'Cormorant Garamond',serif; font-size:18px; letter-spacing:.4em;
+  color:var(--off); text-decoration:none; display:block; margin-bottom:20px;
+}
+.footer-logo span { color:var(--gold); }
+.footer-brand p { font-size:14px; color:rgba(255,255,255,.45); line-height:1.9; max-width:300px; }
+.footer-col h4 {
+  font-size:10px; letter-spacing:.24em; text-transform:uppercase;
+  color:rgba(255,255,255,.35); margin-bottom:22px; font-weight:500;
+}
+.footer-col ul { list-style:none; }
+.footer-col li {
+  font-size:14px; color:rgba(255,255,255,.5); margin-bottom:12px;
+  cursor:pointer; transition:color .25s; letter-spacing:.02em;
+}
+.footer-col li:hover { color:var(--off); }
+.footer-bottom {
+  max-width:1200px; margin:0 auto;
+  padding-top:28px; border-top:1px solid rgba(255,255,255,.07);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+}
+.footer-bottom p { font-size:12px; color:rgba(255,255,255,.28); letter-spacing:.06em; }
+
+/* ─── WHATSAPP FLOAT ─── */
+.wa-float {
+  position:fixed; bottom:32px; right:32px;
+  width:52px; height:52px; background:#25D366; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  z-index:9000; cursor:pointer;
+  box-shadow:0 4px 20px rgba(37,211,102,.3);
+  transition:transform .3s, box-shadow .3s;
+  animation:waPulse 3s infinite;
+}
+.wa-float:hover { transform:scale(1.08); animation:none; box-shadow:0 8px 32px rgba(37,211,102,.5); }
+.wa-float svg { width:24px; height:24px; fill:#fff; }
+@keyframes waPulse {
+  0%,100% { box-shadow:0 4px 20px rgba(37,211,102,.3); }
+  50%      { box-shadow:0 4px 28px rgba(37,211,102,.5), 0 0 0 8px rgba(37,211,102,.07); }
+}
+@media(max-width:600px){ .wa-float { bottom:20px; right:20px; } }
+
+img { -webkit-user-drag:none; user-select:none; }
+
+/* Hide reCAPTCHA badge — not in use */
+.grecaptcha-badge { visibility:hidden !important; display:none !important; }
+</style>
+</head>
+<body oncontextmenu="return false">
+
+<div class="cursor"      id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ─── NAV ─── -->
+<nav id="mainNav">
+    <a href="#" class="nav-logo" style="height:14px; width:120px;">
+        <img src="assets/imgs/_white.svg" class="nav-logo-img-white" alt="Eviora Lands" />
+        <img src="assets/imgs/_dark.svg" class="nav-logo-img-dark" alt="Eviora Lands" />
+    </a>
+  <ul class="nav-links">
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#inquiry">Inquire</a></li>
+  </ul>
+  <button class="nav-cta" onclick="scrollToEl('#inquiry')">Reserve a Lot</button>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="hero">
+    <!-- background slides -->
+    <div class="hero-bg" id="heroBg">
+        <div class="slide active"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-vignette"></div>
+
+    <div class="hero-tag">EVIORA Lands · Est. 2018</div>
+    <!--<div class="hero-index">01 / Overview</div>-->
+    <!-- slide progress dots -->
+    <div class="slide-dots" id="slideDots">
+        <div class="sdot active"></div>
+        <div class="sdot"></div>
+        <div class="sdot"></div>
+        <div class="sdot"></div>
+        <div class="sdot"></div>
+    </div>
+
+    <div class="hero-content" id="heroContent">
+        <h1 class="hero-title">Own Premium<br><em>Investment</em><br>Land.</h1>
+        <div class="hero-bottom">
+            <p class="hero-sub">High-value lots in a fast-growing location. Secure your legacy with land that appreciates.</p>
+            <div class="hero-actions">
+                <a href="#inquiry" class="btn-gold">Inquire Now</a>
+                <a href="#properties" class="btn-ghost-hero">View Lots</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── STATS ─── -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item reveal"><div class="stat-num">44<span>+</span></div><div class="stat-label">Premium Lots</div></div>
+    <div class="stat-item reveal"><div class="stat-num">94<span>%</span></div><div class="stat-label">Lots Sold</div></div>
+    <div class="stat-item reveal"><div class="stat-num">3<span>×</span></div><div class="stat-label">Avg ROI · 5 Yrs</div></div>
+    <div class="stat-item reveal"><div class="stat-num">6</div><div class="stat-label">Hectares Total</div></div>
+  </div>
+</div>
+
+<!-- ─── PROPERTIES ─── -->
+<section class="property-section" id="properties">
+
+  <div class="prop-header reveal">
+    <div>
+      <span class="eyebrow">Available Lots</span>
+      <div class="rule"></div>
+      <h2>Curated <em>Investment</em><br>Opportunities</h2>
+    </div>
+    <div class="prop-header-right">
+      <p>Each lot selected for location advantage, infrastructure access, and long-term appreciation potential.</p>
+      <div class="carousel-nav">
+        <button class="carousel-btn" id="cPrev" aria-label="Previous">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="carousel-btn" id="cNext" aria-label="Next">
+          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="carousel-outer">
+    <div class="carousel-track-wrap">
+      <div class="carousel-track" id="carouselTrack">
+
+        <!-- LOT 21 -->
+        <div class="prop-card">
+          <div class="pc-img-wrap">
+            <div class="pc-img" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=900&q=85&fm=webp')"></div>
+            <div class="pc-hover-overlay"></div>
+            <div class="pc-badge">Available</div>
+            <div class="pc-lot-overlay"><div class="pc-lot-num">Lot #21</div></div>
+            <div class="pc-quick">View Details</div>
+          </div>
+          <div class="pc-body">
+            <div class="pc-meta-row">
+              <div class="pc-meta">Area<strong>450 sqm</strong></div>
+              <div class="pc-meta">Frontage<strong>18 m</strong></div>
+              <div class="pc-meta">Title<strong>Freehold</strong></div>
+            </div>
+            <p class="pc-desc">Gently elevated lot with panoramic east-facing views and direct road access from the main boulevard.</p>
+            <div class="pc-footer">
+              <div class="pc-price"><small>Starting from</small>$82,000</div>
+              <button class="btn-pc-inquire" onclick="fillInquiry('Lot #21')"><span>Inquire →</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOT 22 -->
+        <div class="prop-card">
+          <div class="pc-img-wrap">
+            <div class="pc-img" style="background-image:url('https://images.unsplash.com/photo-1448630360428-65456885c650?w=900&q=85&fm=webp')"></div>
+            <div class="pc-hover-overlay"></div>
+            <div class="pc-badge">Available</div>
+            <div class="pc-lot-overlay"><div class="pc-lot-num">Lot #22</div></div>
+            <div class="pc-quick">View Details</div>
+          </div>
+          <div class="pc-body">
+            <div class="pc-meta-row">
+              <div class="pc-meta">Area<strong>520 sqm</strong></div>
+              <div class="pc-meta">Frontage<strong>22 m</strong></div>
+              <div class="pc-meta">Title<strong>Freehold</strong></div>
+            </div>
+            <p class="pc-desc">Wide frontage lot adjacent to a planned green belt — ideal for a private residence or boutique development.</p>
+            <div class="pc-footer">
+              <div class="pc-price"><small>Starting from</small>$96,500</div>
+              <button class="btn-pc-inquire" onclick="fillInquiry('Lot #22')"><span>Inquire →</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOT 23 -->
+        <div class="prop-card">
+          <div class="pc-img-wrap">
+            <div class="pc-img" style="background-image:url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=900&q=85&fm=webp')"></div>
+            <div class="pc-hover-overlay"></div>
+            <div class="pc-badge urgent">Last Units</div>
+            <div class="pc-lot-overlay"><div class="pc-lot-num">Lot #23</div></div>
+            <div class="pc-quick">View Details</div>
+          </div>
+          <div class="pc-body">
+            <div class="pc-meta-row">
+              <div class="pc-meta">Area<strong>610 sqm</strong></div>
+              <div class="pc-meta">Frontage<strong>25 m</strong></div>
+              <div class="pc-meta">Title<strong>Freehold</strong></div>
+            </div>
+            <p class="pc-desc">Prime mid-section lot with unobstructed east-facing views — one of only two remaining in this block.</p>
+            <div class="pc-footer">
+              <div class="pc-price"><small>Starting from</small>$114,000</div>
+              <button class="btn-pc-inquire" onclick="fillInquiry('Lot #23')"><span>Inquire →</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOT 24 -->
+        <div class="prop-card">
+          <div class="pc-img-wrap">
+            <div class="pc-img" style="background-image:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=900&q=85&fm=webp')"></div>
+            <div class="pc-hover-overlay"></div>
+            <div class="pc-badge corner">Premium Corner</div>
+            <div class="pc-lot-overlay"><div class="pc-lot-num">Lot #24</div></div>
+            <div class="pc-quick">View Details</div>
+          </div>
+          <div class="pc-body">
+            <div class="pc-meta-row">
+              <div class="pc-meta">Area<strong>780 sqm</strong></div>
+              <div class="pc-meta">Frontage<strong>30 m</strong></div>
+              <div class="pc-meta">Title<strong>Freehold</strong></div>
+            </div>
+            <p class="pc-desc">The largest lot with two-sided road frontage — suited for commercial use or a grand private estate.</p>
+            <div class="pc-footer">
+              <div class="pc-price"><small>Starting from</small>$145,000</div>
+              <button class="btn-pc-inquire" onclick="fillInquiry('Lot #24')"><span>Inquire →</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOT 25 -->
+        <div class="prop-card">
+          <div class="pc-img-wrap">
+            <div class="pc-img" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&q=85&fm=webp')"></div>
+            <div class="pc-hover-overlay"></div>
+            <div class="pc-badge">Available</div>
+            <div class="pc-lot-overlay"><div class="pc-lot-num">Lot #25</div></div>
+            <div class="pc-quick">View Details</div>
+          </div>
+          <div class="pc-body">
+            <div class="pc-meta-row">
+              <div class="pc-meta">Area<strong>490 sqm</strong></div>
+              <div class="pc-meta">Frontage<strong>20 m</strong></div>
+              <div class="pc-meta">Title<strong>Freehold</strong></div>
+            </div>
+            <p class="pc-desc">Quiet interior lot surrounded by mature trees — a serene setting for a luxury family home.</p>
+            <div class="pc-footer">
+              <div class="pc-price"><small>Starting from</small>$88,000</div>
+              <button class="btn-pc-inquire" onclick="fillInquiry('Lot #25')"><span>Inquire →</span></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="carousel-progress">
+    <div class="carousel-progress-fill" id="cProgressFill"></div>
+  </div>
+
+</section>
+
+<!-- ─── ABOUT / AGENT ─── -->
+<section class="about-section" id="about">
+  <div class="section-wrap">
+    <div class="about-inner">
+
+      <!-- photo -->
+      <div class="agent-photo-wrap reveal">
+        <div class="agent-photo"></div>
+        <div class="agent-photo-border"></div>
+      </div>
+
+      <!-- text -->
+      <div class="agent-text reveal">
+        <span class="agent-eyebrow">Your Advisor</span>
+        <div class="agent-rule"></div>
+
+        <h2 class="agent-name">Evangeline<br><em>Ga-ang</em></h2>
+        <p class="agent-title">Senior Land Investment Consultant · EVIORA LANDS</p>
+
+        <p class="agent-bio">With over 8 years navigating high-value land markets across Mindanao, Evangeline specialises in connecting discerning investors with off-market opportunities before they reach the open market.</p>
+        <p class="agent-bio">Her client portfolio spans private families, sovereign wealth funds, and Local developers — each transaction handled with absolute discretion and white-glove service.</p>
+
+        <div class="agent-stats">
+          <div class="ast-item">
+            <div class="ast-num">Php25<span>M+</span></div>
+            <div class="ast-label">Total Transactions</div>
+          </div>
+          <div class="ast-item">
+            <div class="ast-num">44<span>+</span></div>
+            <div class="ast-label">Lots Closed</div>
+          </div>
+          <div class="ast-item">
+            <div class="ast-num">8</div>
+            <div class="ast-label">Years Experience</div>
+          </div>
+        </div>
+
+        <div class="agent-creds">
+            <span class="cred-tag">DSHUD license</span>
+          <span class="cred-tag">PRC Accredited</span>
+          <span class="cred-tag">Vista Land North-Min Member</span>
+        </div>
+
+        <div class="agent-contact">
+          <button class="btn-agent-wa" onclick="openWhatsApp('Hello Evangeline, I found you on EVIORA LANDS and would like to discuss a land investment.')">
+            <svg viewBox="0 0 32 32"><path d="M16 0C7.164 0 0 7.163 0 16c0 2.82.736 5.463 2.027 7.754L0 32l8.463-2.006A15.93 15.93 0 0016 32c8.836 0 16-7.163 16-16S24.836 0 16 0zm8.062 22.109c-.336.944-1.97 1.804-2.714 1.918-.698.106-1.582.15-2.554-.16-.589-.188-1.344-.44-2.304-.863-4.053-1.75-6.7-5.842-6.9-6.11-.2-.267-1.63-2.17-1.63-4.14 0-1.97 1.034-2.937 1.4-3.337.366-.4.8-.5 1.067-.5.267 0 .533 0 .766.013.245.014.573-.093.9.686.335.8 1.134 2.77 1.234 2.972.1.2.167.433.033.7-.133.267-.2.433-.4.666-.2.234-.42.52-.6.7-.2.2-.407.416-.175.816.233.4 1.033 1.7 2.216 2.75 1.52 1.354 2.8 1.773 3.2 1.973.4.2.633.167.866-.1.234-.267 1-1.167 1.267-1.567.267-.4.533-.333.9-.2.367.133 2.333 1.1 2.733 1.3.4.2.667.3.767.467.1.167.1.967-.233 1.91z"/></svg>
+            Message Evangeline
+          </button>
+          <button class="btn-agent-call" onclick="window.location='tel:+639958756458'">
+            +63 (995) 875-6458
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── LOCATION ─── -->
+<section class="location-section" id="location">
+  <div class="section-wrap">
+    <div class="location-inner">
+      <div class="location-text reveal">
+        <span class="eyebrow">Prime Location</span>
+        <div class="rule"></div>
+        <h2>Positioned for<br><em>Maximum</em> Growth</h2>
+        <p>Nestled in one of the region's fastest-developing corridors — direct highway access, proximity to commercial hubs, and expanding infrastructure investment.</p>
+        <p>The area has seen consistent 18–24% annual land appreciation over the past five years, outperforming all major asset classes.</p>
+        <button class="btn-wa-loc" onclick="requestLocation()">
+          <svg viewBox="0 0 32 32"><path d="M16 0C7.164 0 0 7.163 0 16c0 2.82.736 5.463 2.027 7.754L0 32l8.463-2.006A15.93 15.93 0 0016 32c8.836 0 16-7.163 16-16S24.836 0 16 0zm8.062 22.109c-.336.944-1.97 1.804-2.714 1.918-.698.106-1.582.15-2.554-.16-.589-.188-1.344-.44-2.304-.863-4.053-1.75-6.7-5.842-6.9-6.11-.2-.267-1.63-2.17-1.63-4.14 0-1.97 1.034-2.937 1.4-3.337.366-.4.8-.5 1.067-.5.267 0 .533 0 .766.013.245.014.573-.093.9.686.335.8 1.134 2.77 1.234 2.972.1.2.167.433.033.7-.133.267-.2.433-.4.666-.2.234-.42.52-.6.7-.2.2-.407.416-.175.816.233.4 1.033 1.7 2.216 2.75 1.52 1.354 2.8 1.773 3.2 1.973.4.2.633.167.866-.1.234-.267 1-1.167 1.267-1.567.267-.4.533-.333.9-.2.367.133 2.333 1.1 2.733 1.3.4.2.667.3.767.467.1.167.1.967-.233 1.91z"/></svg>
+          Request Location
+        </button>
+      </div>
+      <div class="map-frame reveal">
+        <iframe src="https://maps.google.com/maps?q=8.1575,125.1278&t=&z=14&ie=UTF8&iwloc=&output=embed"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Property Location"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FORM ─── -->
+<section class="form-section" id="inquiry">
+  <div class="section-wrap">
+    <div class="form-inner">
+      <div class="form-header reveal">
+        <span class="eyebrow">Express Interest</span>
+        <div class="rule"></div>
+        <h2>Reserve Your<br><em>Lot Today</em></h2>
+        <p>Our advisors will reach out within 24 hours with full details, payment terms, and site visit scheduling.</p>
+      </div>
+      <div id="formWrap">
+        <form class="inquiry-form reveal" id="inquiryForm" onsubmit="handleSubmit(event)">
+          <div class="f-row">
+            <div class="f-field">
+              <input type="text"  id="fname"  name="name"  placeholder="Name"  required autocomplete="off"/>
+              <label for="fname">Full Name</label>
+            </div>
+            <div class="f-field">
+              <input type="email" id="femail" name="email" placeholder="Email" required autocomplete="off"/>
+              <label for="femail">Email Address</label>
+            </div>
+          </div>
+          <div class="f-field">
+            <input type="tel" id="fphone" name="phone" placeholder="Phone"
+              autocomplete="off"
+              inputmode="tel"
+              pattern="[\d\s\-\+\(\)\.]{7,20}"
+              title="e.g. 09171234567 or +639171234567"/>
+            <label for="fphone">Phone / WhatsApp</label>
+          </div>
+          <div class="field-hint" id="phoneHint">Format: 09xxxxxxxxx or +639xxxxxxxxx</div>
+          <div class="f-field">
+            <textarea id="fmessage" name="message" placeholder="Message"></textarea>
+            <label for="fmessage">Message (optional)</label>
+          </div>
+          <!-- Honeypot: invisible to humans, filled by bots -->
+          <div class="hp-trap" aria-hidden="true" tabindex="-1">
+            <input type="text"  name="_hp_name"  id="_hp_name"  tabindex="-1" autocomplete="off"/>
+            <input type="email" name="_hp_email" id="_hp_email" tabindex="-1" autocomplete="off"/>
+          </div>
+          <div class="form-error-msg" id="formErrMsg"></div>
+          <label class="consent-label">
+  <input type="checkbox" id="fConsent" required/>
+  <span>I agree to the collection and processing of my personal data for the purpose of this inquiry.</span><br>
+</label>
+<button type="submit" class="btn-submit" id="submitBtn"><span>Send Inquiry</span></button>
+          <p class="form-note">
+  By submitting, you agree to our
+  <a href="#" onclick="return false;" style="color:var(--gold);text-decoration:underline;">Privacy Policy</a>.
+  Your information is collected under the Philippines Data Privacy Act (RA 10173)
+  and used solely to respond to your inquiry. We never sell your data.
+</p>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <h3>Thank You</h3>
+          <p>Your inquiry has been received.<br>Our team will be in touch within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">EVI<span>O</span>RA</a>
+      <p>A premium land investment consultancy committed to helping discerning investors build generational wealth through strategic real estate.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li onclick="scrollToEl('#properties')">Available Lots</li>
+        <li onclick="scrollToEl('#about')">About</li>
+        <li onclick="scrollToEl('#location')">Location</li>
+        <li onclick="scrollToEl('#inquiry')">Inquire</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@evioralands.online?subject=Property Inquiry">info@evioralands.online</a></li>
+        <li>+63 (995) 875-6458</li>
+        <li onclick="openWhatsApp('Hello, I would like more information about your lots.')">WhatsApp Us</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 EVIORA LANDS. All rights reserved.</p>
+    <p>Privacy · Terms</p>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<div class="wa-float" id="waFloat" onclick="openWhatsApp('Hello, I would like to inquire about your available lots.')" role="button" aria-label="Chat on WhatsApp" tabindex="0">
+  <svg viewBox="0 0 32 32"><path d="M16 0C7.164 0 0 7.163 0 16c0 2.82.736 5.463 2.027 7.754L0 32l8.463-2.006A15.93 15.93 0 0016 32c8.836 0 16-7.163 16-16S24.836 0 16 0zm8.062 22.109c-.336.944-1.97 1.804-2.714 1.918-.698.106-1.582.15-2.554-.16-.589-.188-1.344-.44-2.304-.863-4.053-1.75-6.7-5.842-6.9-6.11-.2-.267-1.63-2.17-1.63-4.14 0-1.97 1.034-2.937 1.4-3.337.366-.4.8-.5 1.067-.5.267 0 .533 0 .766.013.245.014.573-.093.9.686.335.8 1.134 2.77 1.234 2.972.1.2.167.433.033.7-.133.267-.2.433-.4.666-.2.234-.42.52-.6.7-.2.2-.407.416-.175.816.233.4 1.033 1.7 2.216 2.75 1.52 1.354 2.8 1.773 3.2 1.973.4.2.633.167.866-.1.234-.267 1-1.167 1.267-1.567.267-.4.533-.333.9-.2.367.133 2.333 1.1 2.733 1.3.4.2.667.3.767.467.1.167.1.967-.233 1.91z"/></svg>
+</div>
+
+<script>
+/* EVIORA secured build — evioralands.com */
+/* ─── CURSOR ─── */
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e=>{ mx=e.clientX; my=e.clientY; cursor.style.left=mx+'px'; cursor.style.top=my+'px'; });
+(function tick(){ rx+=(mx-rx)*.1; ry+=(my-ry)*.1; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(tick); })();
+document.querySelectorAll('button,a,.wa-float').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ cursor.classList.add('large'); ring.classList.add('large'); });
+  el.addEventListener('mouseleave',()=>{ cursor.classList.remove('large'); ring.classList.remove('large'); });
+});
+
+/* ─── NAV: transparent on hero → glassmorphism on scroll ─── */
+const nav    = document.getElementById('mainNav');
+const heroEl = document.getElementById('hero');
+const heroH  = () => heroEl.offsetHeight;
+function updateNav(){
+  const onHero = window.scrollY < heroH() - 80;
+  nav.classList.toggle('on-hero',  onHero);
+  nav.classList.toggle('scrolled', !onHero);
+}
+window.addEventListener('scroll', updateNav, {passive:true});
+updateNav();
+
+/* ─── HERO SLIDER ─── */
+const slides = document.querySelectorAll('.slide');
+const dots   = document.querySelectorAll('.sdot');
+let cur = 0;
+function nextSlide(){
+  slides[cur].classList.remove('active');
+  dots[cur].classList.remove('active');
+  cur = (cur+1) % slides.length;
+  slides[cur].classList.add('active');
+  dots[cur].classList.add('active');
+}
+setInterval(nextSlide, 5000);
+
+/* ─── PARALLAX ─── */
+const heroContent = document.getElementById('heroContent');
+window.addEventListener('scroll',()=>{
+  requestAnimationFrame(()=>{
+    const s = window.scrollY;
+    if(s < window.innerHeight){
+      heroContent.style.transform = `translate3d(0,${s*.22}px,0)`;
+      heroContent.style.opacity   = 1 - s/(window.innerHeight*.75);
+    }
+  });
+},{passive:true});
+
+/* ─── REVEAL ─── */
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ─── FORM ─── */
+function fillInquiry(lot){
+  document.getElementById('fmessage').value = `I am interested in ${lot}.`;
+  scrollToEl('#inquiry');
+}
+/* ── SECURITY LAYER ──────────────────────────────────────────────── */
+
+/* ------------------------------------------------------------------ *
+ *  CONFIG — paste your GAS Web App URL here                          *
+ * ------------------------------------------------------------------ */
+    const GAS_URL = 'https://script.google.com/macros/s/AKfycbzf-MtvVhLv0vQjHB-ZiGQQdQDqKgPYTaRnK56IUcmhDigYjJ-hZiOOmn49tLxdVk5jcw/exec';
+
+/* 1. Obfuscated contact number — assembled at runtime, never in plain text */
+const _p = ['+639','95','87','56','458']; // replace each segment with your real number
+const _n = _p.join('');
+function _wa(msg){ return 'https://wa.me/' + _n + '?text=' + encodeURIComponent(msg); }
+
+/* 2. Client-side rate limiter — max 3 submissions per 60 seconds */
+const _rl = { hits: 0, until: Date.now() + 60000, emails: {} };
+function _rateOk(email){
+  // Window reset
+  if(Date.now() > _rl.until){ _rl.hits=0; _rl.until=Date.now()+60000; _rl.emails={}; }
+  // Global: max 3 per 60s
+  if(++_rl.hits > 3) return false;
+  // Per-email: max 2 per 60s (blocks same address spamming)
+  const k = (email||'').toLowerCase().trim();
+  _rl.emails[k] = (_rl.emails[k]||0) + 1;
+  if(_rl.emails[k] > 2) return false;
+  return true;
+}
+
+/* 3. XSS sanitizer */
+function _clean(s){
+  return String(s||'')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#x27;').trim();
+}
+
+/* 4. Input validator — returns array of error strings */
+function _check(n,e,p,m){
+  const err=[];
+
+  /* ── NAME ── */
+  if(!n||n.trim().length<2)          err.push('Please enter your full name (at least 2 characters).');
+  if(n.trim().length>100)            err.push('Name must be under 100 characters.');
+
+  /* ── EMAIL ── */
+  const emailRe = /^(?!.*\.\.)[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]{1,64}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
+  if(!e||!emailRe.test(e.trim()))    err.push('Please enter a valid email address (e.g. you@example.com).');
+  if(e.length>150)                   err.push('Email address is too long.');
+  const blocked = /^[^@]+@(mailinator|guerrillamail|tempmail|throwam|yopmail|trashmail|sharklasers|dispostable|fakeinbox|maildrop|spam4|mailnull)\./i;
+  if(blocked.test(e.trim()))         err.push('Please use a real email address.');
+
+  /* ── PHONE (optional field) ── */
+  if(p && p.trim().length > 0){
+    const digits = p.replace(/[\s\-\(\)\+\.]/g,'');
+    if(!/^\d{7,15}$/.test(digits)){
+      err.push('Please enter a valid phone number (e.g. 09171234567 or +639171234567).');
+    } else if(/^(\+63|0)/.test(p.trim()) && digits.length !== 12 && digits.length !== 11){
+      err.push('Philippine numbers should be 11 digits (09xxxxxxxxx) or 12 with country code (+639xxxxxxxxx).');
+    }
+  }
+
+  /* ── MESSAGE ── */
+  if(m.length>2000)                  err.push('Message must be under 2,000 characters.');
+  if(/https?:\/\//i.test(m))         err.push('Links are not allowed in messages.');
+
+  /* ── XSS / INJECTION GUARD ── */
+  // Check for actual HTML tags and script injection — not loose keyword matches
+  const allInput = n+e+p+m;
+  if(/<\s*(script|iframe|object|embed|form)[^>]*>/i.test(allInput))
+    err.push('Invalid input detected.');
+  if(/javascript\s*:|vbscript\s*:|data\s*:\s*text\/html/i.test(allInput))
+    err.push('Invalid input detected.');
+
+  return err;
+}
+
+/* 5. Show / hide inline error */
+function _err(msg){
+  const el=document.getElementById('formErrMsg');
+  if(!el) return;
+  el.textContent=msg;
+  el.classList.add('show');
+  el.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function _clearErr(){
+  const el=document.getElementById('formErrMsg');
+  if(el) el.classList.remove('show');
+}
+
+/* 6. Main form submit handler */
+async function handleSubmit(e){
+  e.preventDefault();
+  _clearErr();
+
+  // Honeypot check — bots fill hidden inputs, humans never do
+  const hp1=(document.getElementById('_hp_name')||{}).value||'';
+  const hp2=(document.getElementById('_hp_email')||{}).value||'';
+  if(hp1||hp2){
+    document.getElementById('inquiryForm').style.display='none';
+    document.getElementById('formSuccess').classList.add('show');
+    return;
+  }
+
+  // Consent check
+  const consent = document.getElementById('fConsent');
+  if(consent && !consent.checked){
+    _err('Please agree to the data privacy terms before submitting.');
+    return;
+  }
+
+  // Collect raw values FIRST — needed for rate limit + validation
+  const rawName    = document.getElementById('fname').value;
+  const rawEmail   = document.getElementById('femail').value;
+  const rawPhone   = document.getElementById('fphone').value;
+  const rawMessage = document.getElementById('fmessage').value;
+
+  // Rate limit (uses rawEmail to block per-address spam)
+  if(!_rateOk(rawEmail)){
+    _err('Too many attempts. Please wait a moment and try again.');
+    return;
+  }
+
+  // Validate
+  const errs = _check(rawName, rawEmail, rawPhone, rawMessage);
+  if(errs.length){ _err(errs[0]); return; }
+
+  // Trim for sending
+  const name    = rawName.trim();
+  const email   = rawEmail.trim();
+  const phone   = rawPhone.trim();
+  const message = rawMessage.trim();
+
+  // Lock button — prevent double-submit
+  const btn  = document.getElementById('submitBtn');
+  const span = btn.querySelector('span');
+  btn.disabled=true;
+  if(span) span.textContent='Sending…';
+
+  // Fetch IP + geo from client side (GAS cannot see client IP server-side)
+  // ipapi.co: free tier, no API key needed, 1000 req/day
+  let ipData = {};
+  try {
+    const ipRes = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(3000) });
+    if(ipRes.ok) ipData = await ipRes.json();
+  } catch(e) { /* timeout or blocked — continue without IP */ }
+
+  // Inner submit — called with reCAPTCHA token (or empty string as fallback)
+  const _send = async (token) => {
+    const payload = {
+      name,
+      email,
+      phone     : phone    || '',
+      message   : message  || '',
+      // ── Lead metadata ──
+      ip        : ipData.ip       || '',
+      city      : ipData.city     || '',
+      region    : ipData.region   || '',
+      country   : ipData.country_name || '',
+      isp       : ipData.org      || '',
+      page_url  : window.location.href,
+      referrer  : document.referrer || 'direct',
+      user_agent: navigator.userAgent,
+      screen    : screen.width + 'x' + screen.height,
+      timezone  : ipData.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone,
+      language  : navigator.language || '',
+      timestamp : new Date().toISOString(),
+    };
+    console.log('[EVIORA] Submitting to GAS…', { name, email });
+    try {
+      const response = await fetch(GAS_URL, {
+        method : 'POST',
+        headers: { 'Content-Type': 'text/plain' },
+        body   : JSON.stringify(payload),
+      });
+      if(!response.ok) throw new Error('HTTP ' + response.status);
+      const result = await response.json();
+      console.log('[EVIORA] GAS response:', result);
+      if(!result.success) throw new Error(result.error || 'Server error');
+      document.getElementById('inquiryForm').style.display='none';
+      document.getElementById('formSuccess').classList.add('show');
+      const waTxt = '*New Property Inquiry*\n\nName: '+name+'\nPhone: '+(phone||'—')+'\nMessage: '+(message||'—');
+      setTimeout(()=>window.open(_wa(waTxt),'_blank'), 700);
+    } catch(err){
+      console.error('[EVIORA] Submission failed:', err);
+      _err('Something went wrong. Please try again or contact us via WhatsApp.');
+      const btn=document.getElementById('submitBtn'), span=btn&&btn.querySelector('span');
+      if(btn) btn.disabled=false;
+      if(span) span.textContent='Send Inquiry';
+    }
+  };
+
+  // Submit directly — reCAPTCHA not configured
+  _send('');
+}
+
+/* ─── HELPERS ─── */
+function openWhatsApp(msg){ window.open(_wa(msg),'_blank'); }
+function requestLocation(){ openWhatsApp('Hello, can you send the exact location of the property?'); }
+function scrollToEl(sel){ document.querySelector(sel).scrollIntoView({behavior:'smooth'}); }
+
+/* ─── WHATSAPP FLOAT BUTTON ─── */
+(function(){
+  const waBtn = document.getElementById('waFloat');
+  if(!waBtn) return;
+  const waMsg = 'Hello, I would like to inquire about your available lots.';
+  waBtn.addEventListener('click', function(){ openWhatsApp(waMsg); });
+  waBtn.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openWhatsApp(waMsg); } });
+})();
+
+/* ─── CAROUSEL ─── */
+(function(){
+  const track   = document.getElementById('carouselTrack');
+  const prevBtn = document.getElementById('cPrev');
+  const nextBtn = document.getElementById('cNext');
+  const fill    = document.getElementById('cProgressFill');
+  if(!track) return;
+
+  const cards = track.querySelectorAll('.prop-card');
+  const gap   = 20;
+  let idx     = 0;
+  let isDragging=false, startX=0, startOff=0, currentOff=0, autoTimer;
+
+  function cardW(){ return cards[0].offsetWidth + gap; }
+  function visCount(){ const ow=track.parentElement.offsetWidth; return Math.max(1,Math.floor((ow+gap)/cardW())); }
+  function maxIdx(){ return Math.max(0, cards.length - visCount()); }
+
+  function goTo(i, animate=true){
+    idx = Math.max(0, Math.min(i, maxIdx()));
+    currentOff = -(idx * cardW());
+    track.style.transition = animate ? 'transform .7s cubic-bezier(.16,1,.3,1)' : 'none';
+    track.style.transform  = `translate3d(${currentOff}px,0,0)`;
+    const pct = maxIdx()===0 ? 100 : (idx/maxIdx())*100;
+    fill.style.width = Math.max(8,pct)+'%';
+    prevBtn.style.opacity = idx===0 ? '.3' : '1';
+    nextBtn.style.opacity = idx>=maxIdx() ? '.3' : '1';
+  }
+
+  prevBtn.addEventListener('click', ()=>{ clearInterval(autoTimer); goTo(idx-1); startAuto(); });
+  nextBtn.addEventListener('click', ()=>{ clearInterval(autoTimer); goTo(idx+1); startAuto(); });
+
+  function onDown(e){ isDragging=true; startX=e.type==='touchstart'?e.touches[0].clientX:e.clientX; startOff=currentOff; track.style.transition='none'; clearInterval(autoTimer); }
+  function onMove(e){ if(!isDragging)return; const x=e.type==='touchmove'?e.touches[0].clientX:e.clientX; track.style.transform=`translate3d(${startOff+(x-startX)}px,0,0)`; }
+  function onUp(e){ if(!isDragging)return; isDragging=false; const x=e.type==='touchend'?e.changedTouches[0].clientX:e.clientX; const dx=x-startX; if(Math.abs(dx)>60) goTo(dx<0?idx+1:idx-1); else goTo(idx); startAuto(); }
+
+  track.addEventListener('mousedown',  onDown);
+  track.addEventListener('touchstart', onDown, {passive:true});
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('touchmove', onMove, {passive:true});
+  window.addEventListener('mouseup',   onUp);
+  window.addEventListener('touchend',  onUp);
+
+  function startAuto(){ autoTimer=setInterval(()=>{ goTo(idx>=maxIdx()?0:idx+1); },5500); }
+
+  goTo(0,false);
+  startAuto();
+  window.addEventListener('resize',()=>goTo(idx,false));
+})();
+
+document.addEventListener('dragstart',e=>e.preventDefault());
+
+/* ── SECURITY: Console warning ─────────────────────────────── */
+(function(){
+  const g='color:#b8965a;font-weight:700;font-size:15px;';
+  const n='color:#444;font-size:12px;line-height:2;';
+  console.log('%c\uD83D\uDD12 EVIORA \u2014 Security Notice',g);
+  console.log('%cThis is a private business website.\nUnauthorized scraping or automation is strictly prohibited.\nFound a vulnerability? Contact: security@eviora.com',n);
+})();
+
+/* ── SECURITY: Keyboard DevTools deterrent ─────────────────── */
+document.addEventListener('keydown',function(e){
+  if(e.key==='F12'){e.preventDefault();return;}
+  if(e.ctrlKey&&e.shiftKey&&['I','J','C','K'].includes(e.key)){e.preventDefault();return;}
+  if(e.ctrlKey&&(e.key==='u'||e.key==='U')){e.preventDefault();return;}
+  if(e.metaKey&&e.altKey&&e.key==='I'){e.preventDefault();return;}  // Mac
+});
+
+/* ── SECURITY: Right-click already blocked; also block text select on prices ── */
+document.querySelectorAll('.pc-price,.stat-num,.agent-name').forEach(function(el){
+  el.style.userSelect='none'; el.style.webkitUserSelect='none'; el.style.msUserSelect='none';
+});
+
+/* ── SECURITY: Right-click disable on sensitive elements ── */
+document.querySelectorAll('.pc-price,.stat-num,.agent-name').forEach(function(el){
+  el.addEventListener('contextmenu', function(ev){ ev.preventDefault(); });
+});
+
+/* ── SECURITY: Console warning ─────────────────────────────── */
+(function(){
+  const g='color:#b8965a;font-weight:700;font-size:15px;';
+  const n='color:#444;font-size:12px;line-height:2;';
+  console.log('%c\uD83D\uDD12 EVIORA \u2014 Security Notice',g);
+  console.log('%cThis is a private business website.\nUnauthorized scraping or automation is strictly prohibited.\nFound a vulnerability? Contact: security@eviora.com',n);
+})();
+
+/* ── SECURITY: Keyboard DevTools deterrent ─────────────────── */
+document.addEventListener('keydown',function(e){
+  if(e.key==='F12'){e.preventDefault();return;}
+  if(e.ctrlKey&&e.shiftKey&&['I','J','C','K'].includes(e.key)){e.preventDefault();return;}
+  if(e.ctrlKey&&(e.key==='u'||e.key==='U')){e.preventDefault();return;}
+  if(e.metaKey&&e.altKey&&e.key==='I'){e.preventDefault();return;}
+});
+
+</script>
+</body>
+</html>
